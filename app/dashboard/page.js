@@ -1,9 +1,13 @@
-import {
+import { currentUser } from '@clerk/nextjs';
+import Datagrid from "./components/datagrid";
+const user = await currentUser();
 
-    UserButton,
-} from "@clerk/nextjs";
+async function Dashboard() {
+    const user = await currentUser();
 
-const Dashboard = () => {
-    return <div>Hello <UserButton afterSignOutUrl="/" /></div>
+    return (
+        <div>
+            <Datagrid username={user?.firstName} />
+        </div>)
 }
 export default Dashboard
